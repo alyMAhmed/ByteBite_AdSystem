@@ -1,0 +1,36 @@
+# Python virtual environment
+.venv/
+venv/
+ENV/
+
+# Environment variables
+.env
+
+# Database files
+*.db
+
+# Large model files
+*.onnx
+*.dat
+*.dylib
+*.so
+
+# Media files
+identified_faces/
+
+# IDE files
+.vscode/
+.idea/
+
+# OS files
+.DS_Store
+
+# Sensitive files
+Cm-1.pem
+face_data*.db
+.DS_Store
+
+# Python cache files
+__pycache__/
+*.py[cod]
+*.class
