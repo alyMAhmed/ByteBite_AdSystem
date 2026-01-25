@@ -1,0 +1,38 @@
+# Computer Vision and Face Recognition
+opencv-python>=4.8.0
+deepface>=0.0.79
+face-recognition>=1.3.0
+numpy>=1.24.0
+
+# Database
+mysql-connector-python>=8.1.0
+
+# AWS Services
+boto3>=1.28.0
+
+# Task Scheduling
+schedule>=1.2.0
+
+# Environment Variables
+python-dotenv>=1.0.0
+
+# GUI and Media Display
+pygame>=2.5.0
+
+# PDF Generation
+reportlab>=4.0.0
+PyPDF2>=3.0.0
+fpdf2>=2.7.0
+
+# Data Analysis
+pandas>=2.0.0
+matplotlib>=3.7.0
+seaborn>=0.12.0
+
+# AI/LLM
+langchain>=0.1.0
+langchain-openai>=0.0.5
+openai>=1.12.0
+
+# HTTP Requests
+requests>=2.31.0
