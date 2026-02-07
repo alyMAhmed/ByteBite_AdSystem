@@ -13,7 +13,6 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     libgomp1 \
     cmake \
     build-essential \
-    curl \
     && rm -rf /var/lib/apt/lists/*
 
 WORKDIR /app
@@ -25,14 +24,7 @@ RUN pip install --no-cache-dir -r requirements.txt
 # Application code (see .dockerignore for exclusions)
 COPY . .
 
-# YuNet face detection model: app expects face_detection_yunet_2022mar.onnx
-# Use model from COPY if present; otherwise try to download 2023mar (same ONNX API)
-RUN if [ ! -f face_detection_yunet_2022mar.onnx ] || [ $$(stat -c%s face_detection_yunet_2022mar.onnx 2>/dev/null || echo 0) -lt 1000 ]; then \
-    curl -fsSL -o /tmp/yunet.onnx \
-      "https://github.com/opencv/opencv_zoo/raw/main/models/face_detection_yunet/face_detection_yunet_2023mar.onnx" \
-    && [ -s /tmp/yunet.onnx ] && [ $$(stat -c%s /tmp/yunet.onnx) -gt 1000 ] \
-    && cp /tmp/yunet.onnx face_detection_yunet_2022mar.onnx; \
-    fi && rm -f /tmp/yunet.onnx
+# YuNet model face_detection_yunet_2022mar.onnx is included via COPY . .
 
 # Directories the app uses (created at runtime if missing, but ensure they exist)
 RUN mkdir -p media identified_faces Reports
