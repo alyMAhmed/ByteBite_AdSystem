@@ -72,6 +72,32 @@ bucket_name=your_s3_bucket_name_here
 PASSWORD=your_database_password_here
 ```
 
+## Running with Docker
+
+1. **Build the image:**
+   ```bash
+   docker build -t facial-recognition .
+   ```
+
+2. **Provide the YuNet model** (required): The app expects `face_detection_yunet_2022mar.onnx` in the project root. Either:
+   - Download it (e.g. from [OpenCV Zoo](https://github.com/opencv/opencv_zoo/tree/main/models/face_detection_yunet) or Hugging Face) and place it in the project before building, or
+   - Mount it at run time: `-v /path/to/face_detection_yunet_2022mar.onnx:/app/face_detection_yunet_2022mar.onnx`
+
+3. **Run the container** (camera and display for GUI):
+   ```bash
+   docker run --rm -it \
+     --device /dev/video0 \
+     -e DISPLAY=$DISPLAY -v /tmp/.X11-unix:/tmp/.X11-unix \
+     -v "$(pwd)/.env:/app/.env" \
+     facial-recognition
+   ```
+   On Linux you may need `xhost +local:docker` once to allow the container to use the display.
+
+4. **Optional:** Mount volumes for persistence (DB, media, reports):
+   ```bash
+   -v "$(pwd)/media:/app/media" -v "$(pwd)/Reports:/app/Reports"
+   ```
+
 ## Usage
 1. Start the main application:
 ```bash

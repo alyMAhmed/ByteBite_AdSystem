@@ -1,0 +1,38 @@
+# Git and IDE
+.git
+.gitignore
+.vscode
+.idea
+
+# Python
+__pycache__
+*.py[cod]
+.venv
+venv
+ENV
+*.egg-info
+
+# Secrets and env (mount at runtime)
+.env
+.env.*
+!.env.example
+
+# Database and generated data (use volumes at runtime)
+*.db
+face_data*.db
+
+# Large/generated content (optional: remove to include in image)
+# media/
+# identified_faces/
+# Reports/
+
+# Docs and tests (optional: remove to include)
+README.md
+test*.py
+*.md
+
+# OS
+.DS_Store
+
+# Keys
+*.pem
